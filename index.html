@@ -8,208 +8,55 @@
 <style>
 /* --- Общие стили --- */
 * {margin:0; padding:0; box-sizing:border-box;}
-html {scroll-behavior: smooth;}
-body {font-family:'Montserrat',sans-serif; background:#0a0a0f; color:white; overflow-x:hidden;}
+html {scroll-behavior:smooth;}
+body {font-family:'Montserrat',sans-serif;background:#0a0a0f;color:white;overflow-x:hidden;}
 
-/* --- Фон со звездным небом --- */
-#bgCanvas {
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  z-index:-1;
-}
+/* --- Фон с анимацией частиц --- */
+#bgCanvas {position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
 
 /* --- HEADER --- */
-header {
-  text-align:center;
-  padding:120px 20px 80px;
-  position:relative;
-}
-header img {
-  width:220px;
-  filter:drop-shadow(0 0 20px #ff3d77);
-  animation:float 3s infinite ease-in-out;
-}
+header {text-align:center;padding:120px 20px 80px;position:relative;}
+header img {width:220px;filter:drop-shadow(0 0 20px #ff3d77);animation:float 3s infinite ease-in-out;}
 @keyframes float {0%{transform:translateY(0);}50%{transform:translateY(-15px);}100%{transform:translateY(0);}}
-h1 {
-  font-size:50px;
-  margin:20px 0 10px;
-  background: linear-gradient(90deg, #ff6a00, #ff3d77, #ff6a00);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientText 5s ease infinite;
-}
-@keyframes gradientText {
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-p.subtitle {
-  font-size:18px;
-  margin:5px 0 15px;
-  color:#ff6a00cc;
-  font-weight:600;
-}
-.btn {
-  display:inline-block;
-  margin-top:20px;
-  padding:18px 50px;
-  background:linear-gradient(45deg,#ff6a00,#ff3d77);
-  border-radius:16px;
-  color:white;
-  font-weight:800;
-  font-size:20px;
-  box-shadow:0 0 20px #ff3d77cc;
-  transition: all 0.4s;
-}
-.btn:hover {
-  transform:scale(1.15) rotate(-2deg);
-  box-shadow:0 0 40px #ff3d77ff, 0 0 60px #ff6a00ff;
-}
+h1 {font-size:50px;margin:20px 0 10px;background: linear-gradient(90deg,#ff6a00,#ff3d77,#ff6a00);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradientText 5s ease infinite;}
+@keyframes gradientText {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+p.subtitle {font-size:18px;margin:5px 0 15px;color:#ff6a00cc;font-weight:600;}
+.btn {display:inline-block;margin-top:20px;padding:18px 50px;background:linear-gradient(45deg,#ff6a00,#ff3d77);border-radius:16px;color:white;font-weight:800;font-size:20px;box-shadow:0 0 20px #ff3d77cc;transition: all 0.4s;}
+.btn:hover {transform:scale(1.15) rotate(-2deg);box-shadow:0 0 40px #ff3d77ff, 0 0 60px #ff6a00ff;}
 
 /* --- Секции --- */
-section {
-  max-width:1100px;
-  margin:auto;
-  padding:80px 20px;
-  position:relative;
-  z-index:1;
-  opacity:0;
-  transform: translateY(50px);
-  transition: all 1s ease;
-}
-section.visible {
-  opacity:1;
-  transform: translateY(0);
-}
-h2 {
-  font-weight:800;
-  font-size:40px;
-  margin-bottom:40px;
-  color:#ff3d77;
-  text-align:center;
-  text-shadow:2px 2px 10px #ff3d77aa;
-}
+section {max-width:1100px;margin:auto;padding:80px 20px;position:relative;z-index:1;opacity:0;transform:translateY(50px);transition:all 1s ease;}
+section.visible {opacity:1;transform:translateY(0);}
+h2 {font-weight:800;font-size:40px;margin-bottom:40px;color:#ff3d77;text-align:center;text-shadow:2px 2px 10px #ff3d77aa;}
 
 /* --- SALE --- */
-.sale {
-  background:linear-gradient(45deg,#ff6a00,#ff3d77);
-  padding:40px 30px;
-  border-radius:25px;
-  text-align:center;
-  box-shadow:0 0 50px #ff3d77cc;
-  font-weight:800;
-  font-size:28px;
-  animation: pulseSale 3s infinite;
-}
+.sale {background:linear-gradient(45deg,#ff6a00,#ff3d77);padding:40px 30px;border-radius:25px;text-align:center;box-shadow:0 0 50px #ff3d77cc;font-weight:800;font-size:28px;animation:pulseSale 3s infinite;}
 @keyframes pulseSale {0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
 
-/* --- КАРТОЧКИ --- */
-.courses {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:30px;
-}
-.card {
-  background: rgba(255,255,255,0.05);
-  padding:35px;
-  border-radius:25px;
-  font-weight:700;
-  font-size:24px;
-  text-align:center;
-  box-shadow:0 0 20px #ff6a00aa;
-  transition: transform 0.5s, box-shadow 0.5s;
-  position:relative;
-  overflow:hidden;
-}
-.card::after {
-  content:"";
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent);
-  opacity:0;
-  transition:opacity 0.3s;
-  border-radius:25px;
-}
-.card:hover {
-  transform:translateY(-15px) scale(1.08) rotate(-1deg);
-  box-shadow:0 0 50px #ff3d77dd;
-}
+/* --- КАРТОЧКИ с параллакс эффектом --- */
+.courses {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;perspective:1000px;}
+.card {background:rgba(255,255,255,0.05);padding:35px;border-radius:25px;font-weight:700;font-size:24px;text-align:center;box-shadow:0 0 20px #ff6a00aa;transition: transform 0.5s, box-shadow 0.5s;position:relative;overflow:hidden;}
+.card::after {content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg, rgba(255,255,255,0.05), transparent);opacity:0;transition:opacity 0.3s;border-radius:25px;}
+.card:hover {transform:translateY(-15px) scale(1.08) rotateY(5deg);box-shadow:0 0 50px #ff3d77dd;}
 .card:hover::after {opacity:1;}
-.card a {
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100%;
-  width:100%;
-  font-size:24px;
-  font-weight:800;
-  position:relative;
-}
+.card a {color:white;display:flex;align-items:center;justify-content:center;height:100%;width:100%;font-size:24px;font-weight:800;position:relative;}
 .card a:hover {text-decoration:underline;}
 
 /* --- СПИСОК --- */
-ul {max-width:600px; margin:0 auto; padding-left:20px; list-style:none;}
-ul li {position:relative; padding-left:40px; font-size:22px; margin-bottom:20px;}
-ul li::before {
-  content:"✔";
-  position:absolute;
-  left:0; top:0;
-  color:#ff3d77;
-  font-weight:900;
-  font-size:24px;
-}
+ul {max-width:600px;margin:0 auto;padding-left:20px;list-style:none;}
+ul li {position:relative;padding-left:40px;font-size:22px;margin-bottom:20px;}
+ul li::before {content:"✔";position:absolute;left:0;top:0;color:#ff3d77;font-weight:900;font-size:24px;}
 
 /* --- ФОРМА --- */
-.form-box {
-  background: rgba(255,255,255,0.05);
-  padding:45px 35px;
-  border-radius:25px;
-  max-width:500px;
-  margin:auto;
-  box-shadow:0 0 30px #ff3d77aa;
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-  transition: all 0.4s;
-}
-.form-box input, .form-box select, .form-box button {
-  padding:18px 22px;
-  border-radius:14px;
-  border:none;
-  font-size:16px;
-  font-weight:700;
-}
-.form-box input, .form-box select {background:#1a1a2e; color:white;}
+.form-box {background: rgba(255,255,255,0.05);padding:45px 35px;border-radius:25px;max-width:500px;margin:auto;box-shadow:0 0 30px #ff3d77aa;display:flex;flex-direction:column;gap:15px;transition: all 0.4s;}
+.form-box input, .form-box select, .form-box button {padding:18px 22px;border-radius:14px;border:none;font-size:16px;font-weight:700;}
+.form-box input, .form-box select {background:#1a1a2e;color:white;}
 .form-box input:focus, .form-box select:focus {outline:2px solid #ff3d77;}
-.form-box button {
-  background:linear-gradient(45deg,#ff6a00,#ff3d77);
-  color:white;
-  cursor:pointer;
-  transition: transform 0.4s, box-shadow 0.4s;
-}
-.form-box button:hover {
-  transform:scale(1.08) rotate(-1deg);
-  box-shadow:0 0 35px #ff3d77dd;
-}
+.form-box button {background:linear-gradient(45deg,#ff6a00,#ff3d77);color:white;cursor:pointer;transition:transform 0.4s, box-shadow 0.4s;}
+.form-box button:hover {transform:scale(1.08) rotate(-1deg);box-shadow:0 0 35px #ff3d77dd;}
 
 /* --- WHATSAPP --- */
-.whatsapp {
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  background:#25d366;
-  padding:20px;
-  border-radius:50%;
-  box-shadow:0 0 30px #25d366cc;
-  color:white;
-  font-size:30px;
-  animation:pulse 2.5s infinite;
-  z-index:1000;
-}
+.whatsapp {position:fixed;bottom:25px;right:25px;background:#25d366;padding:20px;border-radius:50%;box-shadow:0 0 30px #25d366cc;color:white;font-size:30px;animation:pulse 2.5s infinite;z-index:1000;}
 @keyframes pulse {0%{box-shadow:0 0 0 0 rgba(37,211,102,0.7);}70%{box-shadow:0 0 0 20px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
 </style>
 </head>
@@ -226,9 +73,7 @@ ul li::before {
 </header>
 
 <section>
-  <div class="sale">
-    🎁 Бесплатный пробный урок <br> Только для новых учеников
-  </div>
+  <div class="sale">🎁 Бесплатный пробный урок <br> Только для новых учеников</div>
 </section>
 
 <section>
@@ -275,44 +120,43 @@ ul li::before {
 <a href="https://wa.me/77474549856" class="whatsapp" target="_blank">💬</a>
 
 <script>
-// WhatsApp send
+// WhatsApp отправка
 function send(){
-  const n=document.getElementById('name').value.trim();
-  const p=document.getElementById('phone').value.trim();
-  const c=document.getElementById('course').value;
-  if(!n||!p){alert('Пожалуйста, заполните имя и телефон!'); return;}
+  const n = document.getElementById('name').value.trim();
+  const p = document.getElementById('phone').value.trim();
+  const c = document.getElementById('course').value;
+  if(!n||!p){alert('Пожалуйста, заполните имя и телефон!');return;}
   const msg=`🔥 НОВАЯ ЗАЯВКА%0AИмя: ${encodeURIComponent(n)}%0AТел: ${encodeURIComponent(p)}%0AКурс: ${encodeURIComponent(c)}`;
   window.open(`https://wa.me/77474549856?text=${msg}`,'_blank');
 }
 
-// Анимация появления секций
+// Появление секций при скролле
 const sections = document.querySelectorAll('section');
-window.addEventListener('scroll', ()=> {
+window.addEventListener('scroll', () => {
   sections.forEach(sec => {
     const top = sec.getBoundingClientRect().top;
-    const winH = window.innerHeight;
-    if(top < winH - 100) sec.classList.add('visible');
+    if(top < window.innerHeight - 100) sec.classList.add('visible');
   });
 });
 
-// Фон со звездами
+// Звёздное небо с падающими частицами
 const canvas = document.getElementById('bgCanvas');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
 let stars = [];
-for(let i=0;i<150;i++){
-  stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.2,speed:Math.random()*0.5+0.2});
+for(let i=0;i<200;i++){
+  stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.2,speed:Math.random()*0.5+0.2,dx:(Math.random()-0.5)*0.2});
 }
 function animateStars(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   stars.forEach(s=>{
-    s.y -= s.speed;
+    s.y -= s.speed; s.x += s.dx;
     if(s.y<0) s.y=canvas.height;
+    if(s.x<0) s.x=canvas.width;
+    if(s.x>canvas.width) s.x=0;
     ctx.beginPath();
     ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-    ctx.fillStyle='white';
-    ctx.fill();
+    ctx.fillStyle='white'; ctx.fill();
   });
   requestAnimationFrame(animateStars);
 }
