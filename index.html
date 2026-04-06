@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>UpGrade Study Club</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body {font-family:'Montserrat',sans-serif;background:#0a0a0f;color:white;scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:#0a0a0f;color:white;scroll-behavior:smooth;}
 
-/* Анимация фона */
-body::before {
-  content:""; position:fixed; top:0; left:0; width:100%; height:100%;
-  background: radial-gradient(circle at 20% 30%, #ff6a00, transparent 30%),
-              radial-gradient(circle at 80% 70%, #ff3d77, transparent 30%);
+/* Фоновая анимация */
+body::before{
+  content:"";
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:radial-gradient(circle at 20% 30%, #ff6a00, transparent 30%), radial-gradient(circle at 80% 70%, #ff3d77, transparent 30%);
   background-size:200% 200%;
   animation:bgMove 20s infinite linear;
   z-index:-1;
 }
-@keyframes bgMove {
+@keyframes bgMove{
   0%{background-position:0% 0%, 100% 100%;}
   50%{background-position:100% 50%, 0% 50%;}
   100%{background-position:0% 0%, 100% 100%;}
 }
 
 /* Header */
-header{text-align:center;padding:80px 20px 60px;}
+header{text-align:center;padding:100px 20px 60px;}
 header img{width:220px;filter:drop-shadow(0 0 20px #ff3d77);animation:float 3s infinite ease-in-out;}
 @keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-15px);}100%{transform:translateY(0);}}
-h1{font-size:48px;margin:20px 0;background:linear-gradient(45deg,#ff6a00,#ff3d77);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-p.subtitle{font-size:18px;margin:5px 0 15px;color:#ff6a00cc;font-weight:600;}
+h1{font-size:42px;margin:20px 0 10px;background:linear-gradient(45deg,#ff6a00,#ff3d77);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+p.subtitle{font-size:18px;margin:0 0 25px;color:#ff6a00cc;font-weight:600;}
 
-/* Навигация */
-.nav-btns{margin-top:20px;}
-.nav-btns a{display:inline-block;margin:5px;padding:12px 30px;border-radius:12px;background:linear-gradient(45deg,#ff6a00,#ff3d77);color:white;font-weight:700;transition:transform 0.3s,box-shadow 0.3s;}
-.nav-btns a:hover{transform:scale(1.1);box-shadow:0 0 25px #ff3d77ff;}
+/* Кнопка записи */
+.btn{display:inline-block;margin-top:20px;padding:16px 45px;background:linear-gradient(45deg,#ff6a00,#ff3d77);border-radius:12px;text-decoration:none;color:white;font-weight:700;font-size:18px;box-shadow:0 0 15px #ff3d77cc;transition:transform 0.3s,box-shadow 0.3s;}
+.btn:hover{transform:scale(1.1);box-shadow:0 0 30px #ff3d77ff;}
 
 /* Секции */
-section{max-width:1100px;margin:auto;padding:80px 20px;scroll-margin-top:80px;}
-h2{text-align:center;font-weight:700;font-size:36px;margin-bottom:40px;color:#ff3d77;text-shadow:1px 1px 5px #ff3d77aa;}
+section{max-width:1100px;margin:auto;padding:70px 20px;}
+h2{font-weight:700;font-size:32px;margin-bottom:30px;color:#ff3d77;text-align:center;}
 
 /* SALE */
 .sale{background:linear-gradient(45deg,#ff6a00,#ff3d77);padding:35px 25px;border-radius:20px;text-align:center;box-shadow:0 0 40px #ff3d77cc;font-weight:700;font-size:24px;animation:pulseSale 3s infinite;}
 .sale p{margin:8px 0;font-size:18px;}
 @keyframes pulseSale{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
 
-/* Карточки */
+/* Курсы */
 .courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px;}
-.card{background:rgba(255,255,255,0.05);padding:30px;border-radius:20px;font-weight:600;font-size:22px;text-align:center;box-shadow:0 0 10px #ff6a00aa;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;}
+.card{background:rgba(255,255,255,0.05);padding:30px;border-radius:20px;font-weight:600;font-size:22px;text-align:center;box-shadow:0 0 10px #ff6a00aa;transition:transform 0.3s,box-shadow 0.3s;}
 .card:hover{transform:translateY(-12px) scale(1.05);box-shadow:0 0 25px #ff3d77dd;}
-.card a{color:white;font-weight:700;display:block;height:100%;}
+.card a{color:white;text-decoration:none;display:block;height:100%;}
+.card a:hover{text-decoration:underline;}
 
 /* Список преимуществ */
 ul{max-width:600px;margin:0 auto;padding-left:20px;list-style:none;}
-ul li{position:relative;padding-left:35px;font-size:20px;margin-bottom:20px;}
-ul li::before{content:"✔";position:absolute;left:0;color:#ff3d77;font-weight:900;}
+ul li{position:relative;padding-left:30px;font-size:20px;margin-bottom:20px;}
+ul li::before{content:"✔";position:absolute;left:0;color:#ff3d77;font-weight:900;font-size:22px;}
 
 /* Форма */
 .form-box{background:rgba(255,255,255,0.05);padding:40px 30px;border-radius:20px;max-width:500px;margin:auto;box-shadow:0 0 20px #ff3d77aa;display:flex;flex-direction:column;gap:15px;}
@@ -65,33 +65,28 @@ ul li::before{content:"✔";position:absolute;left:0;color:#ff3d77;font-weight:9
 .form-box button:hover{transform:scale(1.05);box-shadow:0 0 25px #ff3d77dd;}
 
 /* WhatsApp */
-.whatsapp{position:fixed;bottom:25px;right:25px;background:#25d366;padding:20px;border-radius:50%;box-shadow:0 0 20px #25d366cc;color:white;font-size:28px;animation:pulse 2.5s infinite;z-index:1000;}
+.whatsapp{position:fixed;bottom:25px;right:25px;background:#25d366;padding:20px;border-radius:50%;box-shadow:0 0 20px #25d366cc;text-decoration:none;color:white;font-size:28px;animation:pulse 2.5s infinite;z-index:1000;}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.7);}70%{box-shadow:0 0 0 15px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
 </style>
 </head>
 <body>
 
 <header>
-<img src="logo.png" alt="UpGrade Study Club logo">
+<img src="logo.png" alt="UpGrade Study Club logo" />
 <h1>UpGrade Study Club</h1>
 <p class="subtitle">📚 Улучшим оценки вашего ребёнка уже за 1 месяц</p>
 <p class="subtitle">Занятия на Русском и Казахском</p>
-<div class="nav-btns">
-<a href="#sale">🎁 Пробный урок</a>
-<a href="#courses">📚 Курсы</a>
-<a href="#why">Почему выбирают нас</a>
-<a href="#form">✏ Записаться</a>
-<a href="#contacts">📞 Контакты</a>
-</div>
+<a href="#form" class="btn">Записаться сейчас</a>
 </header>
 
-<section id="sale">
+<section>
 <div class="sale">
-Бесплатный пробный урок <br>Только для новых учеников
+🎁 Бесплатный пробный урок <br>
+Только для новых учеников
 </div>
 </section>
 
-<section id="courses">
+<section>
 <h2>Наши направления</h2>
 <div class="courses">
 <div class="card"><a href="math.html">📘 Математика</a></div>
@@ -101,7 +96,7 @@ ul li::before{content:"✔";position:absolute;left:0;color:#ff3d77;font-weight:9
 </div>
 </section>
 
-<section id="why">
+<section>
 <h2>Почему выбирают нас</h2>
 <ul>
 <li>Маленькие группы</li>
@@ -126,7 +121,7 @@ ul li::before{content:"✔";position:absolute;left:0;color:#ff3d77;font-weight:9
 </div>
 </section>
 
-<section id="contacts">
+<section>
 <h2>Контакты</h2>
 <p>📍 Алматы, Айгерим, Молдагулова 19</p>
 <p>📞 87474549856</p>
@@ -136,12 +131,12 @@ ul li::before{content:"✔";position:absolute;left:0;color:#ff3d77;font-weight:9
 
 <script>
 function send(){
-  const n=document.getElementById('name').value.trim();
-  const p=document.getElementById('phone').value.trim();
-  const c=document.getElementById('course').value;
-  if(!n||!p){alert('Пожалуйста, заполните имя и телефон!');return;}
-  const msg=`🔥 НОВАЯ ЗАЯВКА%0AИмя:${encodeURIComponent(n)}%0AТел:${encodeURIComponent(p)}%0AКурс:${encodeURIComponent(c)}`;
-  window.open(`https://wa.me/77474549856?text=${msg}`,'_blank');
+const n=document.getElementById('name').value.trim();
+const p=document.getElementById('phone').value.trim();
+const c=document.getElementById('course').value;
+if(!n||!p){alert('Пожалуйста, заполните имя и телефон!');return;}
+const msg=`🔥 НОВАЯ ЗАЯВКА%0AИмя:${encodeURIComponent(n)}%0AТел:${encodeURIComponent(p)}%0AКурс:${encodeURIComponent(c)}`;
+window.open(`https://wa.me/77474549856?text=${msg}`,'_blank');
 }
 </script>
 
