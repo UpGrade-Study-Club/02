@@ -1,285 +1,696 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Продлёнка — UpGrade Study Club</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Продлёнка - безопасное и полезное время после школы. Помощь с домашними заданиями, развивающие занятия, подготовка к экзаменам.">
+    <title>Продлёнка — UpGrade Study Club</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body{
-  font-family:'Montserrat',sans-serif;
-  background:#0a0a0f;
-  color:white;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* ФОН */
-body::before{
-  content:"";
-  position:fixed;
-  width:100%;height:100%;
-  background:
-    radial-gradient(circle at 20% 30%, #ff6a00, transparent 30%),
-    radial-gradient(circle at 80% 70%, #ff3d77, transparent 30%);
-  animation:bgMove 20s infinite linear;
-  z-index:-1;
-}
-@keyframes bgMove{
-  50%{background-position:100% 50%,0% 50%;}
-}
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-/* NAVBAR */
-.navbar{
-  position:fixed;
-  width:100%;
-  padding:15px 25px;
-  z-index:1000;
-  transition:0.4s;
-}
-.navbar.scrolled{
-  background:rgba(10,10,15,0.7);
-  backdrop-filter:blur(12px);
-}
+        /* АНИМИРОВАННЫЙ ФОН */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 30%, #ff6a00 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, #ff3d77 0%, transparent 40%),
+                linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            animation: bgMove 25s infinite ease-in-out;
+            z-index: -1;
+            pointer-events: none;
+        }
 
-.nav-container{
-  max-width:1100px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+        @keyframes bgMove {
+            0%, 100% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+        }
 
-.logo{
-  font-weight:800;
-  font-size:20px;
-  background:linear-gradient(45deg,#ff6a00,#ff3d77);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
+        /* НАВИГАЦИЯ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 25px;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-.nav-links{
-  display:flex;
-  gap:25px;
-}
-.nav-links a{
-  color:white;
-  text-decoration:none;
-  position:relative;
-}
-.nav-links a::after{
-  content:"";
-  position:absolute;
-  bottom:-5px;
-  left:0;
-  width:0%;
-  height:2px;
-  background:#ff3d77;
-  transition:0.3s;
-}
-.nav-links a:hover::after{
-  width:100%;
-}
+        .navbar.scrolled {
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(255, 106, 0, 0.1);
+        }
 
-/* HEADER */
-header{
-  text-align:center;
-  padding:120px 20px 60px;
-}
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-header img{
-  width:180px;
-  animation:float 3s infinite;
-}
+        .logo {
+            font-weight: 800;
+            font-size: 24px;
+            background: linear-gradient(135deg, #ff6a00 0%, #ff3d77 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
 
-@keyframes float{
-  50%{transform:translateY(-10px);}
-}
+        .logo:hover {
+            transform: scale(1.05);
+        }
 
-h1{
-  font-size:40px;
-  margin:20px 0;
-  background:linear-gradient(45deg,#ff6a00,#ff3d77);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
 
-.back{
-  display:inline-block;
-  margin-top:15px;
-  color:#ff6a00;
-  text-decoration:none;
-  font-weight:600;
-}
-.back:hover{
-  text-decoration:underline;
-}
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
 
-/* СЕКЦИИ */
-section{
-  max-width:900px;
-  margin:auto;
-  padding:60px 20px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s;
-}
-section.show{
-  opacity:1;
-  transform:translateY(0);
-}
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6a00, #ff3d77);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-h2{
-  margin-bottom:20px;
-  color:#ff3d77;
-}
+        .nav-links a:hover {
+            color: #ff6a00;
+        }
 
-/* СПИСОК */
-ul{list-style:none;}
-li{
-  margin:12px 0;
-  padding-left:25px;
-  position:relative;
-}
-li::before{
-  content:"✔";
-  position:absolute;
-  left:0;
-  color:#ff3d77;
-}
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-/* ФОРМА */
-.form-box{
-  background:rgba(255,255,255,0.05);
-  padding:30px;
-  border-radius:20px;
-  margin-top:20px;
-}
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 140px 20px 80px;
+            margin-top: 60px;
+        }
 
-input,button{
-  width:100%;
-  padding:14px;
-  margin-top:10px;
-  border:none;
-  border-radius:10px;
-}
+        .header-image {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px;
+            animation: float 4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+            filter: drop-shadow(0 10px 30px rgba(255, 106, 0, 0.2));
+        }
 
-input{
-  background:#1a1a2e;
-  color:white;
-}
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
 
-button{
-  background:linear-gradient(45deg,#ff6a00,#ff3d77);
-  color:white;
-  font-weight:700;
-  cursor:pointer;
-  transition:0.3s;
-}
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ff6a00 0%, #ff3d77 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
 
-button:hover{
-  transform:scale(1.05);
-}
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
 
-/* КНОПКИ */
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25d366;
-  padding:18px;
-  border-radius:50%;
-}
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #ff6a00;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
 
-.top{
-  position:fixed;
-  bottom:90px;
-  right:20px;
-  background:#ff3d77;
-  padding:10px 14px;
-  border-radius:10px;
-  display:none;
-}
-</style>
+        .back-link:hover {
+            background: rgba(255, 106, 0, 0.1);
+            transform: translateX(-5px);
+        }
+
+        /* СЕКЦИИ */
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 70px 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 35px;
+            background: linear-gradient(135deg, #ff6a00 0%, #ff3d77 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        /* СПИСОК */
+        .benefits-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .benefits-list li {
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .benefits-list li:hover {
+            transform: translateX(10px);
+            color: #ff6a00;
+        }
+
+        .benefits-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #ff6a00 0%, #ff3d77 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ФОРМА */
+        .form-section {
+            padding: 70px 20px;
+        }
+
+        .form-box {
+            background: linear-gradient(135deg, rgba(255, 106, 0, 0.1) 0%, rgba(255, 61, 119, 0.1) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 106, 0, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .form-box:hover {
+            border-color: rgba(255, 106, 0, 0.4);
+            background: linear-gradient(135deg, rgba(255, 106, 0, 0.15) 0%, rgba(255, 61, 119, 0.15) 100%);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"] {
+            width: 100%;
+            padding: 16px;
+            background: rgba(26, 26, 46, 0.8);
+            border: 2px solid rgba(255, 106, 0, 0.2);
+            border-radius: 12px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #ff6a00;
+            background: rgba(26, 26, 46, 1);
+            box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.1);
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #ff6a00 0%, #ff3d77 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 15px;
+            box-shadow: 0 10px 30px rgba(255, 106, 0, 0.2);
+        }
+
+        .form-button:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 106, 0, 0.3);
+        }
+
+        .form-button:active:not(:disabled) {
+            transform: translateY(-1px);
+        }
+
+        .form-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* КНОПКИ ФИКСИРОВАННЫЕ */
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .btn-whatsapp,
+        .btn-top {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-top {
+            background: linear-gradient(135deg, #ff6a00 0%, #ff3d77 100%);
+            color: white;
+            display: none;
+        }
+
+        .btn-top.show {
+            display: flex;
+        }
+
+        .btn-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(255, 106, 0, 0.4);
+        }
+
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 20px;
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            header {
+                padding: 100px 20px 60px;
+            }
+
+            .form-box {
+                padding: 25px;
+            }
+
+            section {
+                padding: 50px 20px;
+            }
+
+            .floating-buttons {
+                right: 15px;
+                bottom: 15px;
+            }
+
+            .btn-whatsapp,
+            .btn-top {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 12px 15px;
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+            }
+
+            .nav-links {
+                width: 100%;
+                gap: 15px;
+                margin-top: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            header {
+                margin-top: 50px;
+                padding: 80px 15px 40px;
+            }
+
+            .floating-buttons {
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+
+        /* УТИЛИТЫ */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .loading {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- НАВИГАЦИЯ -->
+    <nav class="navbar" role="navigation" aria-label="Основная навигация">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="UpGrade Study Club - на главную">UpGrade</a>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-<div class="nav-container">
-<div class="logo">UpGrade</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="index.html#courses">Курсы</a></li>
+                <li><a href="index.html#form">Запись</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<div class="nav-links">
-<a href="index.html">Главная</a>
-<a href="index.html#courses">Курсы</a>
-<a href="index.html#form">Запись</a>
-</div>
-</div>
-</nav>
+    <!-- ЗАГОЛОВОК -->
+    <header>
+        <img src="logo.png" alt="UpGrade Study Club логотип" class="header-image">
+        <h1>Продлёнка</h1>
+        <p class="subtitle">Безопасное и полезное время после школы</p>
+        <a href="index.html" class="back-link">← Вернуться на главную</a>
+    </header>
 
-<header>
-<img src="logo.png">
-<h1>Продлёнка</h1>
-<p>Безопасное и полезное время после школы</p>
-<a href="index.html" class="back">⬅ Вернуться на главную</a>
-</header>
+    <!-- ПРЕИМУЩЕСТВА -->
+    <section>
+        <h2>Что вы получите</h2>
+        <ul class="benefits-list">
+            <li>Помощь с домашними заданиями</li>
+            <li>Развивающие занятия</li>
+            <li>Подготовка к экзаменам</li>
+            <li>Творческие активности</li>
+        </ul>
+    </section>
 
-<section>
-<h2>Что вы получите</h2>
-<ul>
-<li>Помощь с домашними заданиями</li>
-<li>Развивающие занятия</li>
-<li>Подготовка к экзаменам</li>
-<li>Творческие активности</li>
-</ul>
-</section>
+    <!-- ФОРМА ЗАПИСИ -->
+    <section class="form-section">
+        <h2>Записаться</h2>
+        <form class="form-box" id="signupForm" novalidate>
+            <div class="form-group">
+                <label for="fullName">Имя ребёнка</label>
+                <input 
+                    type="text" 
+                    id="fullName" 
+                    name="fullName"
+                    placeholder="Введите полное имя"
+                    required
+                    aria-required="true"
+                >
+            </div>
 
-<section>
-<h2>Записаться</h2>
-<div class="form-box">
-<input id="name" placeholder="Имя">
-<input id="phone" placeholder="Телефон">
-<button onclick="send()">Записаться на Продлёнку</button>
-</div>
-</section>
+            <div class="form-group">
+                <label for="parentName">Имя родителя</label>
+                <input 
+                    type="text" 
+                    id="parentName" 
+                    name="parentName"
+                    placeholder="Ваше имя"
+                    aria-required="true"
+                >
+            </div>
 
-<a href="https://wa.me/77474549856" class="whatsapp" target="_blank">💬</a>
-<div class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+            <div class="form-group">
+                <label for="phoneNumber">Номер телефона</label>
+                <input 
+                    type="tel" 
+                    id="phoneNumber" 
+                    name="phoneNumber"
+                    placeholder="+7 (747) 454-98-56"
+                    pattern="[0-9\+\-\s\(\)]+"
+                    required
+                    aria-required="true"
+                >
+            </div>
 
-<script>
+            <button type="submit" class="form-button">Записаться на Продлёнку</button>
+        </form>
+    </section>
 
-/* NAVBAR */
-window.addEventListener("scroll",()=>{
-document.querySelector(".navbar")
-.classList.toggle("scrolled",window.scrollY>50);
+    <!-- ПЛАВАЮЩИЕ КНОПКИ -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/77474549856?text=Здравствуйте!%20Хотелось%20бы%20узнать%20подробнее%20о%20Продлёнке" 
+           class="btn-whatsapp" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Написать в WhatsApp"
+           title="Написать в WhatsApp">
+            💬
+        </a>
+        <button class="btn-top" id="scrollTopBtn" aria-label="Вернуться в начало страницы" title="Вверх"></button>
+    </div>
 
-/* анимация */
-document.querySelectorAll("section").forEach(sec=>{
-if(sec.getBoundingClientRect().top < window.innerHeight-100){
-sec.classList.add("show");
-}
-});
+    <script>
+        // ИНИЦИАЛИЗАЦИЯ
+        document.addEventListener('DOMContentLoaded', () => {
+            setupNavbar();
+            setupScrollAnimations();
+            setupForm();
+            setupScrollToTop();
+        });
 
-/* вверх */
-document.querySelector(".top").style.display =
-window.scrollY>300?"block":"none";
-});
+        // NAVBAR ЭФФЕКТЫ
+        function setupNavbar() {
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
+            });
+        }
 
-/* форма */
-function send(){
-let n=name.value.trim();
-let p=phone.value.trim();
+        // АНИМАЦИЯ СЕКЦИЙ
+        function setupScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
 
-if(!n||!p){alert("Заполните поля");return;}
-if(p.length<8){alert("Введите корректный номер");return;}
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        }
 
-let msg=`🔥 ЗАЯВКА НА ПРОДЛЁНКУ%0AИмя:${encodeURIComponent(n)}%0AТел:${encodeURIComponent(p)}`;
-window.open(`https://wa.me/77474549856?text=${msg}`);
-}
-</script>
+        // ОБРАБОТКА ФОРМЫ
+        function setupForm() {
+            const form = document.getElementById('signupForm');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                submitForm();
+            });
+        }
 
+        function submitForm() {
+            const fullName = document.getElementById('fullName').value.trim();
+            const parentName = document.getElementById('parentName').value.trim();
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const button = document.querySelector('.form-button');
+
+            // ВАЛИДАЦИЯ
+            if (!fullName) {
+                showAlert('Пожалуйста, введите имя ребёнка');
+                return;
+            }
+            if (!phoneNumber) {
+                showAlert('Пожалуйста, введите номер телефона');
+                return;
+            }
+            if (phoneNumber.replace(/\D/g, '').length < 10) {
+                showAlert('Пожалуйста, введите корректный номер телефона');
+                return;
+            }
+
+            // ОТПРАВКА
+            button.disabled = true;
+            button.classList.add('loading');
+            button.textContent = 'Отправка...';
+
+            const message = `🎓 *ЗАЯВКА НА ПРОДЛЁНКУ*\n\n👶 Имя ребёнка: ${fullName}\n👤 Имя родителя: ${parentName || 'Не указано'}\n📱 Телефон: ${phoneNumber}`;
+
+            setTimeout(() => {
+                window.open(`https://wa.me/77474549856?text=${encodeURIComponent(message)}`, '_blank');
+                
+                // ОЧИСТКА ФОРМЫ
+                document.getElementById('signupForm').reset();
+                button.disabled = false;
+                button.classList.remove('loading');
+                button.textContent = 'Записаться на Продлёнку';
+            }, 500);
+        }
+
+        // КНОПКА "ВВЕРХ"
+        function setupScrollToTop() {
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', () => {
+                scrollTopBtn.classList.toggle('show', window.scrollY > 300);
+            });
+
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // ПОКАЗАТЬ АЛЕРТ
+        function showAlert(message) {
+            alert(message);
+        }
+
+        // КОПИРОВАНИЕ НОМЕРА ПРИ КЛИКЕ
+        document.addEventListener('DOMContentLoaded', () => {
+            // Добавьте копирование номера при необходимости
+        });
+    </script>
 </body>
 </html>
