@@ -273,17 +273,20 @@ button:disabled{
   bottom:95px;
   right:20px;
   background:#ff3d77;
-  padding:12px 14px;
-  border-radius:10px;
-  display:block;
+  width:50px;         /* фиксированная ширина */
+  height:50px;        /* фиксированная высота */
+  border-radius:50%;  /* делаем кругом */
+  display:flex;
+  align-items:center;
+  justify-content:center;
   cursor:pointer;
-  font-size:20px;
+  font-size:24px;     /* размер стрелки */
+  color:white;
   opacity:0;
   pointer-events:none;
   transition:opacity 0.3s, transform 0.3s;
   z-index:500;
   border:none;
-  color:white;
   box-shadow:0 4px 15px rgba(255,61,119,0.3);
 }
 .top.show{
