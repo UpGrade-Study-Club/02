@@ -11,14 +11,10 @@
 <title>Английский — UpGrade Study Club</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="dns-prefetch" href="https://wa.me">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-
 html{scroll-behavior:smooth;}
-
 body{
   font-family:'Montserrat',sans-serif;
   background:#0a0a0f;
@@ -26,7 +22,6 @@ body{
   overflow-x:hidden;
   line-height:1.6;
 }
-
 /* ФОН */
 body::before{
   content:"";
@@ -37,16 +32,15 @@ body::before{
     radial-gradient(circle at 20% 30%, #ff6a00, transparent 30%),
     radial-gradient(circle at 80% 70%, #ff3d77, transparent 30%);
   background-size:200% 200%;
-  animation:bgMove 20s infinite ease-in-out;
+  animation:bgMove 30s infinite ease-in-out;
+  will-change: background-position;
   z-index:-1;
 }
-
 @keyframes bgMove{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
-
 /* NAVBAR */
 .navbar{
   position:fixed;
@@ -57,13 +51,11 @@ body::before{
   top:0;
   left:0;
 }
-
 .navbar.scrolled{
   background:rgba(10,10,15,0.9);
   backdrop-filter:blur(12px);
   box-shadow:0 4px 20px rgba(0,0,0,0.3);
 }
-
 .nav-container{
   max-width:1100px;
   margin:auto;
@@ -71,7 +63,6 @@ body::before{
   justify-content:space-between;
   align-items:center;
 }
-
 .logo{
   font-weight:800;
   font-size:20px;
@@ -83,17 +74,14 @@ body::before{
   cursor:pointer;
   transition:0.3s;
 }
-
 .logo:hover{
   transform:scale(1.05);
 }
-
 .nav-links{
   display:flex;
   gap:25px;
   flex-wrap:wrap;
 }
-
 .nav-links a{
   color:white;
   text-decoration:none;
@@ -101,7 +89,6 @@ body::before{
   font-weight:500;
   transition:0.3s;
 }
-
 .nav-links a::after{
   content:"";
   position:absolute;
@@ -112,15 +99,12 @@ body::before{
   background:#ff3d77;
   transition:0.3s ease;
 }
-
 .nav-links a:hover{
   color:#ff6a00;
 }
-
 .nav-links a:hover::after{
   width:100%;
 }
-
 /* HEADER */
 header{
   text-align:center;
@@ -131,18 +115,15 @@ header{
   justify-content:center;
   align-items:center;
 }
-
 header img{
   width:clamp(100px, 20vw, 200px);
   animation:float 3s ease-in-out infinite;
   margin-bottom:20px;
 }
-
 @keyframes float{
   0%, 100%{transform:translateY(0);}
   50%{transform:translateY(-15px);}
 }
-
 h1{
   font-size:clamp(28px, 6vw, 48px);
   margin:20px 0;
@@ -152,14 +133,12 @@ h1{
   background-clip:text;
   font-weight:800;
 }
-
 header p{
   font-size:clamp(14px, 3vw, 18px);
   color:#ccc;
   max-width:500px;
   margin:15px auto;
 }
-
 /* КНОПКА НАЗАД */
 .back{
   display:inline-block;
@@ -171,12 +150,10 @@ header p{
   border-radius:8px;
   transition:0.3s;
 }
-
 .back:hover{
   background:rgba(255,106,0,0.1);
   transform:translateX(-5px);
 }
-
 /* СЕКЦИИ */
 section{
   max-width:900px;
@@ -186,21 +163,17 @@ section{
   transform:translateY(40px);
   transition:1s ease;
 }
-
 section.show{
   opacity:1;
   transform:translateY(0);
 }
-
 h2{
   margin-bottom:20px;
   color:#ff3d77;
   font-size:clamp(24px, 4vw, 32px);
 }
-
 /* СПИСОК */
 ul{list-style:none;}
-
 li{
   margin:16px 0;
   padding-left:35px;
@@ -208,11 +181,9 @@ li{
   font-size:clamp(14px, 2vw, 16px);
   transition:0.3s;
 }
-
 li:hover{
   transform:translateX(5px);
 }
-
 li::before{
   content:"✓";
   position:absolute;
@@ -220,8 +191,8 @@ li::before{
   color:#ff3d77;
   font-weight:700;
   font-size:18px;
+  aria-hidden:true;
 }
-
 /* ФОРМА */
 .form-box{
   background:rgba(255,255,255,0.05);
@@ -231,7 +202,6 @@ li::before{
   backdrop-filter:blur(10px);
   border:1px solid rgba(255,255,255,0.1);
 }
-
 input, button{
   width:100%;
   padding:14px;
@@ -242,24 +212,20 @@ input, button{
   font-size:16px;
   transition:0.3s ease;
 }
-
 input{
   background:#1a1a2e;
   color:white;
   border:1px solid rgba(255,255,255,0.1);
 }
-
 input:focus{
   outline:none;
   border-color:#ff6a00;
   background:#262638;
   box-shadow:0 0 10px rgba(255,106,0,0.2);
 }
-
 input::placeholder{
   color:#888;
 }
-
 button{
   background:linear-gradient(45deg,#ff6a00,#ff3d77);
   color:white;
@@ -268,21 +234,17 @@ button{
   border:none;
   margin-top:20px;
 }
-
 button:hover{
   transform:scale(1.02);
   box-shadow:0 8px 25px rgba(255,106,0,0.3);
 }
-
 button:active{
   transform:scale(0.98);
 }
-
 button:disabled{
   opacity:0.5;
   cursor:not-allowed;
 }
-
 /* WHATSAPP */
 .whatsapp{
   position:fixed;
@@ -301,12 +263,10 @@ button:disabled{
   z-index:500;
   box-shadow:0 4px 15px rgba(37,211,102,0.3);
 }
-
 .whatsapp:hover{
   transform:scale(1.1);
   box-shadow:0 6px 20px rgba(37,211,102,0.5);
 }
-
 /* КНОПКА ВВЕРХ */
 .top{
   position:fixed;
@@ -315,80 +275,50 @@ button:disabled{
   background:#ff3d77;
   padding:12px 14px;
   border-radius:10px;
-  display:none;
+  display:block;
   cursor:pointer;
   font-size:20px;
-  transition:0.3s;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.3s, transform 0.3s;
   z-index:500;
   border:none;
   color:white;
   box-shadow:0 4px 15px rgba(255,61,119,0.3);
 }
-
+.top.show{
+  opacity:1;
+  pointer-events:auto;
+}
 .top:hover{
   transform:translateY(-3px);
   box-shadow:0 6px 20px rgba(255,61,119,0.5);
 }
+/* Подтверждение формы */
+#form-message{
+  margin-top:12px;
+  font-size:14px;
+  color:#ff6a00;
+  display:none;
+}
 
 /* МОБИЛЬНЫЕ МЕДИА */
 @media (max-width:768px) {
-  .navbar{
-    padding:12px 15px;
-  }
-
-  .nav-links{
-    gap:15px;
-    font-size:14px;
-  }
-
-  header{
-    padding:100px 15px 40px;
-  }
-
-  section{
-    padding:40px 15px;
-  }
-
-  h1{
-    font-size:32px;
-  }
-
-  h2{
-    font-size:24px;
-  }
-
-  .form-box{
-    padding:20px;
-  }
-
-  input, button{
-    padding:12px;
-    font-size:14px;
-  }
-
-  .whatsapp, .top{
-    width:50px;
-    height:50px;
-  }
+  .navbar{padding:12px 15px;}
+  .nav-links{gap:15px;font-size:14px;}
+  header{padding:100px 15px 40px;}
+  section{padding:40px 15px;}
+  h1{font-size:32px;}
+  h2{font-size:24px;}
+  .form-box{padding:20px;}
+  input, button{padding:12px;font-size:14px;}
+  .whatsapp, .top{width:50px;height:50px;}
 }
-
-@media (max-width:480px) {
-  .nav-links{
-    flex-direction:column;
-    gap:10px;
-  }
-
-  h1{
-    font-size:24px;
-  }
-
-  .logo{
-    font-size:16px;
-  }
-
-  header img{
-    width:80px;
-  }
+@media (max-width:480px){
+  .nav-links{flex-direction:column;gap:10px;}
+  h1{font-size:24px;}
+  .logo{font-size:16px;}
+  header img{width:80px;}
 }
 </style>
 </head>
@@ -397,139 +327,116 @@ button:disabled{
 
 <!-- NAVBAR -->
 <nav class="navbar" role="navigation" aria-label="Главное меню">
-<div class="nav-container">
-<div class="logo" onclick="window.location.href='index.html'" title="На главную">UpGrade</div>
-
-<div class="nav-links">
-<a href="index.html">Главная</a>
-<a href="index.html#courses">Курсы</a>
-<a href="index.html#form">Запись</a>
-</div>
-</div>
+  <div class="nav-container">
+    <a href="index.html" class="logo" title="На главную">UpGrade</a>
+    <div class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="index.html#courses">Курсы</a>
+      <a href="index.html#form">Запись</a>
+    </div>
+  </div>
 </nav>
 
 <header role="banner">
-<img src="logo.png" alt="Логотип UpGrade Study Club" loading="lazy">
-<h1>Английский</h1>
-<p>Изучение английского языка с нуля до разговорного уровня</p>
-<a href="index.html" class="back">⬅ Вернуться на главную</a>
+  <img src="logo.png" alt="Логотип UpGrade Study Club" loading="lazy">
+  <h1>Английский</h1>
+  <p>Изучение английского языка с нуля до разговорного уровня</p>
+  <a href="index.html" class="back">⬅ Вернуться на главную</a>
 </header>
 
 <section aria-labelledby="benefits-heading">
-<h2 id="benefits-heading">Что вы получите</h2>
-<ul>
-<li>Грамматика и словарный запас</li>
-<li>Разговорная практика</li>
-<li>Чтение и аудирование</li>
-<li>Подготовка к экзаменам</li>
-</ul>
+  <h2 id="benefits-heading">Что вы получите</h2>
+  <ul>
+    <li>Грамматика и словарный запас</li>
+    <li>Разговорная практика</li>
+    <li>Чтение и аудирование</li>
+    <li>Подготовка к экзаменам</li>
+  </ul>
 </section>
 
-<section aria-labelledby="signup-heading">
-<h2 id="signup-heading">Записаться</h2>
-<div class="form-box">
-<form id="signup-form" onsubmit="send(event)">
-<input id="name" type="text" placeholder="Имя" required aria-label="Ваше имя">
-<input id="phone" type="tel" placeholder="Телефон" required aria-label="Ваш телефон">
-<button type="submit" aria-label="Отправить форму записи">Записаться на Английский</button>
-</form>
-</div>
+<section id="form" aria-labelledby="signup-heading">
+  <h2 id="signup-heading">Записаться</h2>
+  <div class="form-box">
+    <form id="signup-form">
+      <input id="name" type="text" placeholder="Имя" required aria-label="Ваше имя">
+      <input id="phone" type="tel" placeholder="Телефон" required aria-label="Ваш телефон">
+      <button type="submit" aria-label="Отправить форму записи">Записаться на Английский</button>
+      <div id="form-message" aria-live="polite"></div>
+    </form>
+  </div>
 </section>
 
 <a href="https://wa.me/77474549856" class="whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Написать в WhatsApp">💬</a>
 <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Прокрутить вверх">↑</button>
 
 <script>
-
 // NAVBAR прокрутка
-window.addEventListener("scroll",()=>{
-  const navbar = document.querySelector(".navbar");
+const navbar = document.querySelector(".navbar");
+const topBtn = document.querySelector(".top");
+window.addEventListener("scroll", ()=>{
   if(window.scrollY > 50){
     navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-
-  // Анимация секций
-  document.querySelectorAll("section").forEach(sec=>{
-    const rect = sec.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100){
-      sec.classList.add("show");
-    }
-  });
+  } else { navbar.classList.remove("scrolled"); }
 
   // Кнопка вверх
-  const topBtn = document.querySelector(".top");
-  topBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  if(window.scrollY > 300){
+    topBtn.classList.add("show");
+  } else { topBtn.classList.remove("show"); }
+});
+
+// IntersectionObserver для секций
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('section').forEach(sec=>observer.observe(sec));
+
+// Smooth scroll для якорей
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e){
+    const href = this.getAttribute('href');
+    if(href !== '#'){
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if(element) element.scrollIntoView({behavior:'smooth'});
+    }
+  });
 });
 
 // Форма отправки
-function send(event){
-  event.preventDefault();
-  
+document.getElementById("signup-form").addEventListener("submit", function(e){
+  e.preventDefault();
   const nameInput = document.getElementById("name");
   const phoneInput = document.getElementById("phone");
-  const button = event.target.querySelector("button");
-  
+  const button = this.querySelector("button");
+  const msgBox = document.getElementById("form-message");
+
   const n = nameInput.value.trim();
-  const p = phoneInput.value.trim().replace(/\D/g, '');
+  const p = phoneInput.value.trim().replace(/\D/g,'');
 
-  // Валидация
-  if(!n || !p){
-    alert("Пожалуйста, заполните все поля");
-    return;
-  }
-  
-  if(p.length < 10){
-    alert("Пожалуйста, введите корректный номер телефона");
-    return;
-  }
+  if(!n || !p){ alert("Пожалуйста, заполните все поля"); return; }
+  if(p.length < 10){ alert("Пожалуйста, введите корректный номер телефона"); return; }
 
-  // Проверка формата телефона
-  if(!/^[0-9]{10,}$/.test(p)){
-    alert("Номер телефона должен содержать минимум 10 цифр");
-    return;
-  }
-
-  // Отключаем кнопку
   button.disabled = true;
   button.textContent = "Отправляется...";
 
   const msg = `🔥 ЗАЯВКА НА АНГЛИЙСКИЙ%0A📝 Имя: ${encodeURIComponent(n)}%0A📞 Телефон: ${encodeURIComponent(p)}`;
-  
+
   setTimeout(()=>{
     window.open(`https://wa.me/77474549856?text=${msg}`, '_blank');
-    
-    // Очищаем форму
-    nameInput.value = '';
-    phoneInput.value = '';
-    
-    // Возвращаем состояние кнопки
+    nameInput.value=''; phoneInput.value='';
     button.disabled = false;
     button.textContent = "Записаться на Английский";
+
+    // Показать сообщение на странице
+    msgBox.textContent = "✅ Ваша заявка успешно отправлена! Мы свяжемся с вами в WhatsApp.";
+    msgBox.style.display = "block";
+    setTimeout(()=>{ msgBox.style.display = "none"; }, 5000);
   }, 500);
-}
-
-// Инициализация при загрузке
-document.addEventListener("DOMContentLoaded", ()=>{
-  // Smooth scroll для якорей
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e){
-      const href = this.getAttribute('href');
-      if(href !== '#'){
-        e.preventDefault();
-        const element = document.querySelector(href);
-        if(element){
-          element.scrollIntoView({behavior: 'smooth'});
-        }
-      }
-    });
-  });
 });
-
-// Предотвращение множественных отправок
-let isSubmitting = false;
-
 </script>
 
 </body>
